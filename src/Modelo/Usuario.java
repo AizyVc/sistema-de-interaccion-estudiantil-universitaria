@@ -11,23 +11,23 @@ public class Usuario {
     private int idUsuario;
     private String nombre;
     private String correo;
-    private String password;
+    private String contrasena;
     private String carrera;
     private LocalDate fechaRegistro;
 
-    public Usuario(String nombre, String correo, String password, String carrera, LocalDate fechaRegistro) {
+    public Usuario(String nombre, String correo, String contrasena, String carrera, LocalDate fechaRegistro) {
         this.nombre = nombre;
         this.correo = correo;
-        this.password = password;
+        this.contrasena = contrasena;
         this.carrera = carrera;
         this.fechaRegistro = fechaRegistro;
     }
 
-    public Usuario(int idUsuario, String nombre, String correo, String password, String carrera, LocalDate fechaRegistro) {
+    public Usuario(int idUsuario, String nombre, String correo, String contrasena, String carrera, LocalDate fechaRegistro) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.correo = correo;
-        this.password = password;
+        this.contrasena = contrasena;
         this.carrera = carrera;
         this.fechaRegistro = fechaRegistro;
     }
@@ -56,12 +56,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public String getCarrera() {
