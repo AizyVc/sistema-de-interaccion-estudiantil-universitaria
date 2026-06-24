@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Modelo;
+package Modelo.DTO;
 
 import java.time.LocalDate;
 
@@ -21,6 +21,9 @@ public class Usuario {
         this.contrasena = contrasena;
         this.carrera = carrera;
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public Usuario() {
     }
 
     public Usuario(int idUsuario, String nombre, String correo, String contrasena, String carrera, LocalDate fechaRegistro) {
