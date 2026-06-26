@@ -16,7 +16,7 @@ import java.sql.SQLException;
  */
 public class UsuarioDAO {
 
-    public Connection conexion;
+    private Connection conexion;
 
     public UsuarioDAO() {
         conexion = Conexion.obtenerConexion();
@@ -24,7 +24,7 @@ public class UsuarioDAO {
 
     public boolean registrarUsuario(Usuario usuario) {
         String sql
-                = "INSERT INTO usuarios(nombre, correo, contraseña, carrera)"
+                = "INSERT INTO usuarios(nombre, correo, contrasena, carrera) "
                 + "VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = conexion.prepareStatement(sql);
