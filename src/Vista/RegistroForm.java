@@ -4,17 +4,23 @@
  */
 package Vista;
 
+import Controlador.UsuarioController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
 public class RegistroForm extends javax.swing.JFrame {
 
+    private UsuarioController usuarioController;
+
     /**
      * Creates new form RegistroForm
      */
     public RegistroForm() {
         initComponents();
+        usuarioController = new UsuarioController();
     }
 
     /**
@@ -37,7 +43,7 @@ public class RegistroForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtContrasena = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        txtConfirmarContrasena = new javax.swing.JPasswordField();
         btnRegistrarse = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         lblIniciarSesion = new javax.swing.JLabel();
@@ -45,7 +51,6 @@ public class RegistroForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(900, 600));
-        setPreferredSize(new java.awt.Dimension(900, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(250, 251, 252));
@@ -95,13 +100,18 @@ public class RegistroForm extends javax.swing.JFrame {
         jLabel6.setText("Confirmar Contraseña");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
-        jPasswordField2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jPasswordField2.setText("jPasswordField2");
-        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 256, -1));
+        txtConfirmarContrasena.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtConfirmarContrasena.setText("jPasswordField2");
+        jPanel1.add(txtConfirmarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 256, -1));
 
         btnRegistrarse.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         btnRegistrarse.setForeground(new java.awt.Color(0, 32, 94));
         btnRegistrarse.setText("Registrarse");
+        btnRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistrarseMouseClicked(evt);
+            }
+        });
         btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarseActionPerformed(evt);
@@ -127,9 +137,42 @@ public class RegistroForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        // TO  DO add your handling code here:
-        
+        String nombre = txtNombre.getText().trim();
+        String correo = txtCorreo.getText().trim();
+        String contrasena = new String(txtContrasena.getPassword()).trim();
+        String confirmarContrasena = new String(txtConfirmarContrasena.getPassword()).trim();
+        String carrera = cmbCarrera.getSelectedItem().toString();
+
+        if (nombre.isBlank() || correo.isBlank() || contrasena.isBlank()
+                || confirmarContrasena.isBlank() || carrera.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.");
+            return;
+        }
+        if (carrera.equals("Escoga una opcion")) {
+            JOptionPane.showMessageDialog(this, "Seleccione una carrera.");
+            return;
+        }
+        boolean registrado = usuarioController.registrarUsuario(nombre, correo, contrasena, carrera);
+
+        if (!contrasena.equals(confirmarContrasena)) {
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
+            return;
+        }
+        if (registrado) {
+            JOptionPane.showMessageDialog(this, "Usuario registrado correctamente.");
+            txtNombre.setText("");
+            txtCorreo.setText("");
+            txtContrasena.setText("");
+            txtConfirmarContrasena.setText("");
+            cmbCarrera.setSelectedIndex(0);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se pudo registrar el usuario.");
+        }
     }//GEN-LAST:event_btnRegistrarseActionPerformed
+
+    private void btnRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseClicked
+
+    }//GEN-LAST:event_btnRegistrarseMouseClicked
 
     /**
      * @param args the command line arguments
@@ -178,8 +221,8 @@ public class RegistroForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JLabel lblIniciarSesion;
+    private javax.swing.JPasswordField txtConfirmarContrasena;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;

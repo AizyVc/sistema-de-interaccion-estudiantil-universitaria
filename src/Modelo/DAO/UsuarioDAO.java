@@ -9,6 +9,7 @@ import Modelo.DTO.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 
 /**
  *
@@ -21,6 +22,7 @@ public class UsuarioDAO {
     public UsuarioDAO() {
         conexion = Conexion.obtenerConexion();
     }
+//Registrar Usuario 
 
     public boolean registrarUsuario(Usuario usuario) {
         String sql
@@ -38,11 +40,34 @@ public class UsuarioDAO {
             } else {
                 return false;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
 
+    }
+
+    public Usuario iniciarSesion(String correo, String contrasena) {
+        String sql = "SELECT * FROM usuarios "
+                + "WHERE correo= ? AND contrasena= ?";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1, correo);
+            ps.setString(2, contrasena);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setIdUsuario(rs.getInt("id_usuario"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setCorreo(rs.getString("correo"));
+                usuario.setContrasena(rs.getString("contrasena"));
+                usuario.setCarrera(rs.getString("carrera"));
+                return usuario;
+            }
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

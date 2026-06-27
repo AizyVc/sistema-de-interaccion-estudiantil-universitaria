@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-//Esto es solo una prueba 
+//Esto es solo una prueba
 package Main;
 
 import Modelo.DAO.UsuarioDAO;
@@ -21,7 +21,7 @@ public class ProyectoConstruccion {
         Usuario usuario = new Usuario();
 
         usuario.setNombre("Aizy");
-        usuario.setCorreo("aizy@gmail.com");
+        usuario.setCorreo("aizvc@gmail.com");
         usuario.setContrasena("123456");
         usuario.setCarrera("Ingeniería en Software");
 

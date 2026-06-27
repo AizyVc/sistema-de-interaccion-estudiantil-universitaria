@@ -4,18 +4,24 @@
  */
 package Vista;
 
+import Controlador.UsuarioController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
  */
 public class LoginForm extends javax.swing.JFrame {
 
+    UsuarioController usuarioController;
+
     /**
      * Creates new form LoginForm
      */
     public LoginForm() {
         initComponents();
-        
+        usuarioController = new UsuarioController();
+
     }
 
     /**
@@ -99,7 +105,21 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        
+        //Aun por corregir
+        String correo = txtCorreo.getText().trim();
+        String contrasena = new String(txtContrasena.getPassword()).trim();
+        if (correo.isBlank() || contrasena.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Llenar todos los campos");
+            return;
+        }
+        boolean loginExitoso = usuarioController.iniciarSesion(correo, contrasena);
+        if (loginExitoso) {
+            HomeForm homeForm = new HomeForm();
+            homeForm.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Contraseña o correo incorrectos");
+        }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     /**
@@ -136,7 +156,7 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
