@@ -20,6 +20,7 @@ public class UsuarioController {
     }
 
     public boolean registrarUsuario(String nombre, String correo, String contrasena, String carrera) {
+
         Usuario usuario = new Usuario();
 
         usuario.setNombre(nombre);
@@ -34,4 +35,28 @@ public class UsuarioController {
         return usuarioDAO.iniciarSesion(correo, contrasena);
     }
 
+    public boolean validarCorreo(String correo) {
+        if (!correo.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarNombre(String nombre) {
+        if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validarContrasena(String contrasena) {
+        if (contrasena.length() < 8) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean existeCorreo(String correo) {
+        return usuarioDAO.existeCorreo(correo);
+    }
 }

@@ -72,7 +72,6 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
 
         txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        txtContrasena.setText("jPasswordField1");
         jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 267, -1));
 
         btnIniciarSesion.setBackground(new java.awt.Color(0, 32, 94));
@@ -87,19 +86,24 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 110, 34));
 
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel4.setText("¿Aún no tiene una cuenta?");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
 
-        lblRegistrarse.setForeground(new java.awt.Color(0, 32, 94));
+        lblRegistrarse.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblRegistrarse.setForeground(new java.awt.Color(51, 51, 255));
         lblRegistrarse.setText("Registrarse");
-        jPanel1.add(lblRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, -1));
+        lblRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegistrarseMouseClicked(evt);
+            }
+        });
+        jPanel1.add(lblRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 390, 440));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_ug.png"))); // NOI18N
-        jLabel5.setMaximumSize(new java.awt.Dimension(900, 600));
-        jLabel5.setMinimumSize(new java.awt.Dimension(900, 600));
-        jLabel5.setPreferredSize(new java.awt.Dimension(900, 600));
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -112,18 +116,34 @@ public class LoginForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Llenar todos los campos");
             return;
         }
+        if (!usuarioController.validarContrasena(contrasena)) {
+            JOptionPane.showMessageDialog(this,
+                    "La contraseña debe tener al menos 8 caracteres.");
+            return;
+        }
+        if (!usuarioController.validarCorreo(correo)) {
+            JOptionPane.showMessageDialog(this,
+                    "Ingrese un correo electrónico válido.");
+            return;
+        }
         Usuario usuario = usuarioController.iniciarSesion(correo, contrasena);
         if (usuario != null) {
-
-            JOptionPane.showMessageDialog(this, "Bienvenido " + usuario.getNombre());
+            JOptionPane.showMessageDialog(this, "Bienvenido/a " + usuario.getNombre());
             HomeForm homeForm = new HomeForm();
             homeForm.setVisible(true);
             this.dispose();
         } else {
-
             JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void lblRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarseMouseClicked
+        // TODO add your handling code here:
+        RegistroForm registro = new RegistroForm();
+        registro.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_lblRegistrarseMouseClicked
 
     /**
      * @param args the command line arguments

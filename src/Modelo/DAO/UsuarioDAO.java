@@ -70,6 +70,21 @@ public class UsuarioDAO {
             return null;
         }
     }
-    
-    
+
+    public boolean existeCorreo(String correo) {
+        String sql = "SELECT 1 FROM usuarios WHERE correo = ?";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1, correo);
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

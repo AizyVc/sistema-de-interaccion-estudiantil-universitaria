@@ -92,7 +92,6 @@ public class RegistroForm extends javax.swing.JFrame {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
 
         txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        txtContrasena.setText("jPasswordField1");
         jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 256, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -101,7 +100,6 @@ public class RegistroForm extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
 
         txtConfirmarContrasena.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        txtConfirmarContrasena.setText("jPasswordField2");
         jPanel1.add(txtConfirmarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 256, -1));
 
         btnRegistrarse.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -126,6 +124,12 @@ public class RegistroForm extends javax.swing.JFrame {
         lblIniciarSesion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         lblIniciarSesion.setForeground(new java.awt.Color(0, 0, 255));
         lblIniciarSesion.setText("Iniciar Sesion");
+        lblIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIniciarSesionMouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 390, 440));
@@ -144,20 +148,41 @@ public class RegistroForm extends javax.swing.JFrame {
         String carrera = cmbCarrera.getSelectedItem().toString();
 
         if (nombre.isBlank() || correo.isBlank() || contrasena.isBlank()
-                || confirmarContrasena.isBlank() || carrera.isBlank()) {
+                || confirmarContrasena.isBlank()) {
             JOptionPane.showMessageDialog(this, "Todos los campos son obligatorios.");
             return;
         }
-        if (carrera.equals("Escoga una opcion")) {
+        if (!usuarioController.validarNombre(nombre)) {
+            JOptionPane.showMessageDialog(this,
+                    "El nombre solo puede contener letras y espacios.");
+            return;
+        }
+
+        if (!usuarioController.validarContrasena(contrasena)) {
+            JOptionPane.showMessageDialog(this,
+                    "La contraseña debe tener al menos 8 caracteres.");
+            return;
+        }
+        if (!usuarioController.validarCorreo(correo)) {
+            JOptionPane.showMessageDialog(this,
+                    "Ingrese un correo electrónico válido.");
+            return;
+        }
+
+        if (carrera.equals("Escoja una opcion")) {
             JOptionPane.showMessageDialog(this, "Seleccione una carrera.");
             return;
         }
-        boolean registrado = usuarioController.registrarUsuario(nombre, correo, contrasena, carrera);
+        if (usuarioController.existeCorreo(correo)) {
+            JOptionPane.showMessageDialog(this, "El correo ya está registrado.");
+            return;
+        }
 
         if (!contrasena.equals(confirmarContrasena)) {
             JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
             return;
         }
+        boolean registrado = usuarioController.registrarUsuario(nombre, correo, contrasena, carrera);
         if (registrado) {
             JOptionPane.showMessageDialog(this, "Usuario registrado correctamente.");
             txtNombre.setText("");
@@ -173,6 +198,13 @@ public class RegistroForm extends javax.swing.JFrame {
     private void btnRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseClicked
 
     }//GEN-LAST:event_btnRegistrarseMouseClicked
+
+    private void lblIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIniciarSesionMouseClicked
+        LoginForm login = new LoginForm();
+        login.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_lblIniciarSesionMouseClicked
 
     /**
      * @param args the command line arguments
