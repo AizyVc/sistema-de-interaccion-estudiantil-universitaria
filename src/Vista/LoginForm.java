@@ -5,6 +5,7 @@
 package Vista;
 
 import Controlador.UsuarioController;
+import Modelo.DTO.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class LoginForm extends javax.swing.JFrame {
 
-    UsuarioController usuarioController;
+    private UsuarioController usuarioController;
 
     /**
      * Creates new form LoginForm
@@ -105,20 +106,22 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        //Aun por corregir
         String correo = txtCorreo.getText().trim();
         String contrasena = new String(txtContrasena.getPassword()).trim();
         if (correo.isBlank() || contrasena.isBlank()) {
             JOptionPane.showMessageDialog(this, "Llenar todos los campos");
             return;
         }
-        boolean loginExitoso = usuarioController.iniciarSesion(correo, contrasena);
-        if (loginExitoso) {
+        Usuario usuario = usuarioController.iniciarSesion(correo, contrasena);
+        if (usuario != null) {
+
+            JOptionPane.showMessageDialog(this, "Bienvenido " + usuario.getNombre());
             HomeForm homeForm = new HomeForm();
             homeForm.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Contraseña o correo incorrectos");
+
+            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 

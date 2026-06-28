@@ -30,14 +30,8 @@ public class UsuarioController {
         return usuarioDAO.registrarUsuario(usuario);
     }
 
-    public boolean iniciarSesion(String correo, String contrasena) { //Aun por corregir
-        Usuario usuario = usuarioDAO.iniciarSesion(correo, contrasena);
-        if (usuario != null) {
-            return true;
-        } else {
-            return false;
-        }
-
+    public Usuario iniciarSesion(String correo, String contrasena) {
+        return usuarioDAO.iniciarSesion(correo, contrasena);
     }
 
 }
