@@ -223,6 +223,11 @@ public class RegistroForm extends javax.swing.JFrame {
             txtContrasena.setText("");
             txtConfirmarContrasena.setText("");
             cmbCarrera.setSelectedIndex(0);
+
+            LoginForm login = new LoginForm();
+            login.setVisible(true);
+            this.dispose();
+
         } else {
             JOptionPane.showMessageDialog(this, "No se pudo registrar el usuario.");
         }

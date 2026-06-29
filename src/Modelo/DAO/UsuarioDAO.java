@@ -23,7 +23,6 @@ public class UsuarioDAO {
         conexion = Conexion.obtenerConexion();
     }
 //Registrar Usuario 
-
     public boolean registrarUsuario(Usuario usuario) {
         String sql
                 = "INSERT INTO usuarios(nombre, correo, contrasena, carrera) "
