@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.UsuarioController;
 import Modelo.DTO.Usuario;
+import Sesion.SesionUsuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -127,10 +128,12 @@ public class LoginForm extends javax.swing.JFrame {
             return;
         }
         Usuario usuario = usuarioController.iniciarSesion(correo, contrasena);
+
         if (usuario != null) {
-            JOptionPane.showMessageDialog(this, "Bienvenido/a " + usuario.getNombre());
-            HomeForm homeForm = new HomeForm();
-            homeForm.setVisible(true);
+            SesionUsuario.iniciarSesion(usuario);
+            JOptionPane.showMessageDialog(this,"Bienvenido " + usuario.getNombre());
+            HomeForm home = new HomeForm();
+            home.setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");

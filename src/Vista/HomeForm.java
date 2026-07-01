@@ -4,6 +4,10 @@
  */
 package Vista;
 
+import Modelo.DTO.Usuario;
+import Sesion.SesionUsuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -15,6 +19,18 @@ public class HomeForm extends javax.swing.JFrame {
      */
     public HomeForm() {
         initComponents();
+        Usuario usuarioActual = SesionUsuario.obtenerUsuario();
+
+    if (usuarioActual == null) {
+        JOptionPane.showMessageDialog(this,"Debe iniciar sesión para acceder.");
+
+        LoginForm login = new LoginForm();
+        login.setVisible(true);
+        this.dispose();
+        return;
+    }
+
+    lblBienvenida.setText("Bienvenido/a, " + usuarioActual.getNombre());
     }
 
     /**
@@ -26,11 +42,11 @@ public class HomeForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblBienvenido = new javax.swing.JLabel();
+        lblBienvenida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblBienvenido.setText("jLabel1");
+        lblBienvenida.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -38,14 +54,14 @@ public class HomeForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(lblBienvenido)
+                .addComponent(lblBienvenida)
                 .addContainerGap(811, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(lblBienvenido)
+                .addComponent(lblBienvenida)
                 .addContainerGap(249, Short.MAX_VALUE))
         );
 
@@ -88,6 +104,6 @@ public class HomeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel lblBienvenido;
+    private javax.swing.JLabel lblBienvenida;
     // End of variables declaration//GEN-END:variables
 }
