@@ -15,11 +15,13 @@ public class Publicacion {
     private int idPublicacion;
     private String titulo;
     private String contenido;
-    private LocalDateTime fecha; 
-    private int idUsuario;      
-    private int idCategoria;   
+    private LocalDateTime fecha;
+    private int idUsuario;
+    private int idCategoria;
 
-  
+    public Publicacion() {
+    }
+
     public Publicacion(String titulo, String contenido, int idUsuario, int idCategoria) {
         this.titulo = titulo;
         this.contenido = contenido;

@@ -4,10 +4,24 @@
  */
 package Controlador;
 
+import Modelo.DAO.CategoriaDAO;
+import Modelo.DTO.Categoria;
+import java.util.List;
+
 /**
  *
  * @author User
  */
 public class CategoriaController {
+
+    private CategoriaDAO categoriaDAO;
+
+    public CategoriaController() {
+        categoriaDAO = new CategoriaDAO();
+    }
+
+    public List<Categoria> listarCategorias() {
+        return categoriaDAO.listarCategorias();
+    }
     
 }

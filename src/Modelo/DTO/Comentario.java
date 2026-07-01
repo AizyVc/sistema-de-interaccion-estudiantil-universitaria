@@ -14,9 +14,12 @@ public class Comentario {
 
     private int idComentario;
     private String contenido;
-    private LocalDateTime fecha; 
-    private int idUsuario;      
-    private int idPublicacion;   
+    private LocalDateTime fecha;
+    private int idUsuario;
+    private int idPublicacion;
+
+    public Comentario() {
+    }
 
     public Comentario(String contenido, int idUsuario, int idPublicacion) {
         this.contenido = contenido;
