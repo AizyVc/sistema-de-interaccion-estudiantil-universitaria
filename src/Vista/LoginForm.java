@@ -7,7 +7,10 @@ package Vista;
 import Controlador.UsuarioController;
 import Modelo.DTO.Usuario;
 import Sesion.SesionUsuario;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -25,6 +28,8 @@ public class LoginForm extends javax.swing.JFrame {
         usuarioController = new UsuarioController();
 
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,9 +49,13 @@ public class LoginForm extends javax.swing.JFrame {
         btnIniciarSesion = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         lblRegistrarse = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        bg = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(250, 251, 252));
@@ -60,20 +69,28 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 32, 94));
-        jLabel1.setText("Correo Electronico ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
+        jLabel1.setText("Correo Electrónico ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
+        txtCorreo.setBackground(new java.awt.Color(250, 251, 252));
         txtCorreo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
+        txtCorreo.setText("Ingrese su correo electrónico...");
+        txtCorreo.setBorder(null);
         txtCorreo.setName(""); // NOI18N
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 267, -1));
+        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 267, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 32, 94));
         jLabel2.setText("Contraseña");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
+        txtContrasena.setBackground(new java.awt.Color(250, 251, 252));
         txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 267, -1));
+        txtContrasena.setForeground(new java.awt.Color(204, 204, 204));
+        txtContrasena.setText(".............");
+        txtContrasena.setBorder(null);
+        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 267, -1));
 
         btnIniciarSesion.setBackground(new java.awt.Color(0, 32, 94));
         btnIniciarSesion.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -88,6 +105,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 110, 34));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(125, 129, 142));
         jLabel4.setText("¿Aún no tiene una cuenta?");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
 
@@ -102,12 +120,25 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel1.add(lblRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 390, 440));
+        jSeparator1.setForeground(new java.awt.Color(0, 32, 94));
+        jSeparator1.setMaximumSize(new java.awt.Dimension(32767, 35));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 270, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo_ug.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jSeparator2.setForeground(new java.awt.Color(0, 32, 94));
+        jSeparator2.setMaximumSize(new java.awt.Dimension(32767, 35));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 270, 10));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 390, 440));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
+        bg.setMaximumSize(new java.awt.Dimension(1024, 640));
+        bg.setMinimumSize(new java.awt.Dimension(1024, 640));
+        bg.setPreferredSize(new java.awt.Dimension(1024, 640));
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 680));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 170, 180));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
@@ -153,28 +184,9 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
+        FlatLightLaf.setup();
+        UIManager.put( "Button.arc", 999 );
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -185,13 +197,16 @@ public class LoginForm extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bg;
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblRegistrarse;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtCorreo;

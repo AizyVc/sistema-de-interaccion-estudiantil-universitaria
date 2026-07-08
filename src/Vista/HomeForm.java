@@ -42,31 +42,147 @@ public class HomeForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         lblBienvenida = new javax.swing.JLabel();
+        txtBuscarPublicacion = new javax.swing.JTextField();
+        cmbCategoria = new javax.swing.JComboBox<>();
+        lblBuscarPublicacion = new javax.swing.JLabel();
+        lblCategoria = new javax.swing.JLabel();
+        btnBuscarPublicacion = new javax.swing.JButton();
+        btnNuevaPublicacion = new javax.swing.JButton();
+        lblBievenida = new javax.swing.JLabel();
+        btnLimpiarBusqueda = new javax.swing.JButton();
+        btnVerDetalle = new javax.swing.JButton();
+        scrollPublicaciones = new javax.swing.JScrollPane();
+        panelPublicaciones = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblBienvenida.setText("jLabel1");
+        lblBienvenida.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
+        lblBienvenida.setForeground(new java.awt.Color(0, 32, 94));
+
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Confesiones", "Proyectos", "Tareas", "Eventos", "Preguntas académicas" }));
+
+        lblBuscarPublicacion.setText("Buscar publicación:");
+
+        lblCategoria.setText("Categoría:");
+
+        btnBuscarPublicacion.setText("Buscar");
+        btnBuscarPublicacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPublicacionActionPerformed(evt);
+            }
+        });
+
+        btnNuevaPublicacion.setText("Nueva publicación");
+
+        lblBievenida.setText("Bienvenido/a");
+
+        btnLimpiarBusqueda.setText("Limpiar busqueda");
+
+        btnVerDetalle.setText("Ver detalle");
+
+        javax.swing.GroupLayout panelPublicacionesLayout = new javax.swing.GroupLayout(panelPublicaciones);
+        panelPublicaciones.setLayout(panelPublicacionesLayout);
+        panelPublicacionesLayout.setHorizontalGroup(
+            panelPublicacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 723, Short.MAX_VALUE)
+        );
+        panelPublicacionesLayout.setVerticalGroup(
+            panelPublicacionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 293, Short.MAX_VALUE)
+        );
+
+        scrollPublicaciones.setViewportView(panelPublicaciones);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCategoria)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(175, 175, 175)
+                                .addComponent(btnLimpiarBusqueda))
+                            .addComponent(btnNuevaPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblBuscarPublicacion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBuscarPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscarPublicacion)
+                                .addGap(33, 33, 33)
+                                .addComponent(btnVerDetalle))
+                            .addComponent(lblBievenida))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(lblBienvenida)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(scrollPublicaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblBienvenida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblBievenida)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBuscarPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblBuscarPublicacion)
+                            .addComponent(btnBuscarPublicacion))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCategoria)
+                            .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLimpiarBusqueda))
+                        .addGap(10, 10, 10)
+                        .addComponent(btnNuevaPublicacion))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnVerDetalle)))
+                .addGap(26, 26, 26)
+                .addComponent(scrollPublicaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(184, 184, 184))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(lblBienvenida)
-                .addContainerGap(811, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(lblBienvenida)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarPublicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPublicacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarPublicacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,6 +220,18 @@ public class HomeForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarPublicacion;
+    private javax.swing.JButton btnLimpiarBusqueda;
+    private javax.swing.JButton btnNuevaPublicacion;
+    private javax.swing.JButton btnVerDetalle;
+    private javax.swing.JComboBox<String> cmbCategoria;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBienvenida;
+    private javax.swing.JLabel lblBievenida;
+    private javax.swing.JLabel lblBuscarPublicacion;
+    private javax.swing.JLabel lblCategoria;
+    private javax.swing.JPanel panelPublicaciones;
+    private javax.swing.JScrollPane scrollPublicaciones;
+    private javax.swing.JTextField txtBuscarPublicacion;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,9 +6,11 @@ package Vista;
 
 /**
  *
- * @author User
+ * @author Nugeanhe
  */
 public class PerfilForm extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PerfilForm.class.getName());
 
     /**
      * Creates new form PerfilForm
@@ -26,20 +28,122 @@ public class PerfilForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        content = new javax.swing.JPanel();
+        lblMiperfil = new javax.swing.JLabel();
+        lblinfoPerfil = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        lblCorreo = new javax.swing.JLabel();
+        txtCorreo1 = new javax.swing.JTextField();
+        lblCarrera = new javax.swing.JLabel();
+        txtCorreo2 = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        content.setBackground(new java.awt.Color(255, 255, 255));
+        content.setPreferredSize(new java.awt.Dimension(806, 503));
+
+        lblMiperfil.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lblMiperfil.setForeground(new java.awt.Color(0, 32, 94));
+        lblMiperfil.setText("Mi perfil");
+
+        lblinfoPerfil.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblinfoPerfil.setForeground(new java.awt.Color(0, 32, 94));
+        lblinfoPerfil.setText("Consulta y gestiona tu información personal");
+
+        lblNombre.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(0, 32, 94));
+        lblNombre.setText("Nombre:");
+
+        txtCorreo.setBackground(new java.awt.Color(250, 251, 252));
+        txtCorreo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtCorreo.setText("Pablo Anchundia");
+        txtCorreo.setBorder(null);
+        txtCorreo.setName(""); // NOI18N
+
+        lblCorreo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblCorreo.setForeground(new java.awt.Color(0, 32, 94));
+        lblCorreo.setText("Correo:");
+
+        txtCorreo1.setBackground(new java.awt.Color(250, 251, 252));
+        txtCorreo1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtCorreo1.setText("PablotAnchudia12@gmail.com");
+        txtCorreo1.setBorder(null);
+        txtCorreo1.setName(""); // NOI18N
+
+        lblCarrera.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblCarrera.setForeground(new java.awt.Color(0, 32, 94));
+        lblCarrera.setText("Carrera:");
+
+        txtCorreo2.setBackground(new java.awt.Color(250, 251, 252));
+        txtCorreo2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        txtCorreo2.setText("Software");
+        txtCorreo2.setToolTipText("");
+        txtCorreo2.setBorder(null);
+        txtCorreo2.setName(""); // NOI18N
+
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCarrera)
+                    .addComponent(txtCorreo2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCorreo)
+                    .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNombre)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMiperfil)
+                    .addComponent(lblinfoPerfil))
+                .addContainerGap(473, Short.MAX_VALUE))
+        );
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contentLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblMiperfil)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblinfoPerfil)
+                .addGap(18, 18, 18)
+                .addComponent(lblNombre)
+                .addGap(11, 11, 11)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblCorreo)
+                .addGap(11, 11, 11)
+                .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblCarrera)
+                .addGap(11, 11, 11)
+                .addComponent(txtCorreo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 808, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 503, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -58,25 +162,24 @@ public class PerfilForm extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PerfilForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PerfilForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PerfilForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PerfilForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PerfilForm().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new PerfilForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel content;
+    private javax.swing.JLabel lblCarrera;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblMiperfil;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblinfoPerfil;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtCorreo1;
+    private javax.swing.JTextField txtCorreo2;
     // End of variables declaration//GEN-END:variables
 }
