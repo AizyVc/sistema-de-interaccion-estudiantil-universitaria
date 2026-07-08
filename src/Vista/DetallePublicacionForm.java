@@ -33,11 +33,12 @@ public class DetallePublicacionForm extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         txtTituloPublicacion = new javax.swing.JTextField();
         lblTitulo1 = new javax.swing.JLabel();
-        txtautor = new javax.swing.JTextField();
+        txtAutor = new javax.swing.JTextField();
         lblCategoria = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
         scrollContenidoPublicacion = new javax.swing.JScrollPane();
         txtContenidoPublicacion = new javax.swing.JTextArea();
+        txtCategoria = new javax.swing.JTextField();
 
         lblBienvenida.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         lblBienvenida.setForeground(new java.awt.Color(0, 32, 94));
@@ -57,6 +58,8 @@ public class DetallePublicacionForm extends javax.swing.JFrame {
         txtContenidoPublicacion.setRows(5);
         scrollContenidoPublicacion.setViewportView(txtContenidoPublicacion);
 
+        txtCategoria.setText("jTextField1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -66,12 +69,15 @@ public class DetallePublicacionForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollContenidoPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFecha)
-                    .addComponent(lblCategoria)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblCategoria)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(lblTitulo1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtautor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(lblTitulo)
                             .addGap(23, 23, 23)
@@ -88,14 +94,16 @@ public class DetallePublicacionForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTitulo1)
-                    .addComponent(txtautor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(lblCategoria)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCategoria)
+                    .addComponent(txtCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblFecha)
                 .addGap(18, 18, 18)
                 .addComponent(scrollContenidoPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -145,8 +153,9 @@ public class DetallePublicacionForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTitulo1;
     private javax.swing.JScrollPane scrollContenidoPublicacion;
+    private javax.swing.JTextField txtAutor;
+    private javax.swing.JTextField txtCategoria;
     private javax.swing.JTextArea txtContenidoPublicacion;
     private javax.swing.JTextField txtTituloPublicacion;
-    private javax.swing.JTextField txtautor;
     // End of variables declaration//GEN-END:variables
 }

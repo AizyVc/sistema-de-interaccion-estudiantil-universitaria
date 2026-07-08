@@ -6,12 +6,15 @@ package Modelo.DAO;
 
 import Conexion.Conexion;
 import Modelo.DTO.Publicacion;
-import Modelo.DTO.Usuario;
-import Modelo.DTO.Categoria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import Modelo.DTO.PublicacionVista;
+import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -44,6 +47,56 @@ public class PublicacionDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public List<PublicacionVista> listarPublicaciones() {
+
+        List<PublicacionVista> publicaciones = new ArrayList<>();
+
+        String sql = """
+        SELECT p.id_publicacion,
+               p.titulo,
+               p.contenido,
+               p.fecha,
+               u.nombre AS nombre_usuario,
+               c.nombre_categoria
+        FROM publicaciones p
+        INNER JOIN usuarios u
+            ON p.id_usuario = u.id_usuario
+        INNER JOIN categorias c
+            ON p.id_categoria = c.id_categoria
+        ORDER BY p.fecha DESC
+        """;
+
+        try (
+                PreparedStatement ps = conexion.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+
+                Timestamp fechaSql = rs.getTimestamp("fecha");
+
+                PublicacionVista publicacion = new PublicacionVista(
+                        rs.getInt("id_publicacion"),
+                        rs.getString("titulo"),
+                        rs.getString("contenido"),
+                        fechaSql != null
+                                ? fechaSql.toLocalDateTime()
+                                : null,
+                        rs.getString("nombre_usuario"),
+                        rs.getString("nombre_categoria")
+                );
+
+                publicaciones.add(publicacion);
+            }
+
+        } catch (SQLException e) {
+            System.err.println(
+                    "Error al listar publicaciones: "
+                    + e.getMessage()
+            );
+        }
+
+        return publicaciones;
     }
 
 }

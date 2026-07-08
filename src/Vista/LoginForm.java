@@ -184,7 +184,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        FlatLightLaf.setup();
+       FlatLightLaf.setup();
         UIManager.put( "Button.arc", 999 );
         
         /* Create and display the form */

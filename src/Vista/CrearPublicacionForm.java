@@ -6,6 +6,10 @@ package Vista;
 
 import Controlador.CategoriaController;
 import Controlador.PublicacionController;
+import Modelo.DTO.Categoria;
+import Modelo.DTO.Categoria;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,24 +22,31 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
      */
     private CategoriaController categoriaController;
     private PublicacionController publicacionController;
+    private List<Categoria> listaCategorias;
+    private HomeForm homeForm;
 
     public CrearPublicacionForm() {
         initComponents();
+
         categoriaController = new CategoriaController();
         publicacionController = new PublicacionController();
 
-        // cargarCategorias();
+        cargarCategorias();
     }
 
-    /* Metodo para crear categoria
-    private void cargarCategorias() {
-    cmbCategoria.removeAllItems();
-    List<Categoria> categorias = categoriaController.listarCategorias();
-    for (Categoria categoria : categorias) {
-        cmbCategoria.addItem(categoria);
+    public CrearPublicacionForm(HomeForm homeForm) {
+        this();
+        this.homeForm = homeForm;
     }
-}
-     */
+
+    private void cargarCategorias() {
+        cmbCategoria.removeAllItems();
+        listaCategorias = categoriaController.listarCategorias();
+        for (Categoria categoria : listaCategorias) {
+            cmbCategoria.addItem(categoria.getNombreCategoria());
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +68,7 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnPublicar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblBienvenida.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         lblBienvenida.setForeground(new java.awt.Color(0, 32, 94));
@@ -70,6 +81,11 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
         lblCategoria.setText("Categoría:");
 
         cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Confesiones", "Proyectos", "Tareas", "Eventos", "Preguntas académicas" }));
+        cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCategoriaActionPerformed(evt);
+            }
+        });
 
         lblContenido.setText("Contenido:");
 
@@ -78,8 +94,18 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
         scrollContenido.setViewportView(txtContenidoPublicacion);
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnPublicar.setText("Publicar");
+        btnPublicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPublicarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,7 +150,7 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnPublicar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,6 +168,55 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCategoriaActionPerformed
+
+    private void btnPublicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublicarActionPerformed
+        // TODO add your handling code here:
+        String titulo = txtTituloPublicacion.getText().trim();
+        String contenido = txtContenidoPublicacion.getText().trim();
+        if (titulo.isBlank() || contenido.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos.");
+            return;
+        }
+        int indice = cmbCategoria.getSelectedIndex();
+        if (indice < 0 || listaCategorias == null || listaCategorias.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione una categoría.");
+            return;
+        }
+        Categoria categoriaSeleccionada = listaCategorias.get(indice);
+        boolean creado = publicacionController.crearPublicacion(
+                titulo,
+                contenido,
+                categoriaSeleccionada.getIdCategoria()
+        );
+        if (creado) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Publicación creada correctamente."
+            );
+
+            if (homeForm != null) {
+                homeForm.actualizarPublicaciones();
+            }
+
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No se pudo crear la publicación.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }//GEN-LAST:event_btnPublicarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,7 +253,6 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnPublicar;

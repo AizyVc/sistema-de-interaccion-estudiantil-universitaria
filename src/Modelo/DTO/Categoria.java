@@ -40,4 +40,8 @@ public class Categoria {
     public void setNombreCategoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
     }
+     @Override
+    public String toString() {
+        return nombreCategoria;
+    }
 }

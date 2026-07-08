@@ -8,6 +8,9 @@ import Modelo.DAO.PublicacionDAO;
 import Modelo.DTO.Publicacion;
 import Modelo.DTO.Usuario;
 import Sesion.SesionUsuario;
+import java.sql.ResultSet;
+import Modelo.DTO.PublicacionVista;
+import java.util.List;
 
 /**
  *
@@ -22,6 +25,18 @@ public class PublicacionController {
     }
 
     public boolean crearPublicacion(String titulo, String contenido, int idCategoria) {
+        if (titulo == null || titulo.isBlank()) {
+            return false;
+        }
+
+        if (contenido == null || contenido.isBlank()) {
+            return false;
+        }
+
+        if (idCategoria <= 0) {
+            return false;
+        }
+
         Usuario usuarioActual = SesionUsuario.obtenerUsuario();
         if (usuarioActual == null) {
             return false;
@@ -33,4 +48,9 @@ public class PublicacionController {
         publicacion.setIdCategoria(idCategoria);
         return publicacionDAO.crearPublicacion(publicacion);
     }
+
+    public List<PublicacionVista> listarPublicaciones() {
+        return publicacionDAO.listarPublicaciones();
+    }
+
 }

@@ -7,6 +7,9 @@ package Main;
 
 import Modelo.DAO.UsuarioDAO;
 import Modelo.DTO.Usuario;
+import Vista.LoginForm;
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,7 +21,12 @@ public class ProyectoConstruccion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
+        FlatLightLaf.setup();
+        SwingUtilities.invokeLater(() -> {
+            LoginForm login = new LoginForm();
+            login.setLocationRelativeTo(null);
+            login.setVisible(true);
+        });
     }
 
 }
