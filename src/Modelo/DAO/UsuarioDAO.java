@@ -23,6 +23,7 @@ public class UsuarioDAO {
         conexion = Conexion.obtenerConexion();
     }
 //Registrar Usuario 
+
     public boolean registrarUsuario(Usuario usuario) {
         String sql
                 = "INSERT INTO usuarios(nombre, correo, contrasena, carrera) "
@@ -84,6 +85,72 @@ public class UsuarioDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public Usuario buscarPorCorreo(String correo) {
+
+        String sql = """
+        SELECT id_usuario,
+               nombre,
+               correo,
+               contrasena,
+               carrera,
+               fecha_registro
+        FROM usuarios
+        WHERE correo = ?
+        """;
+
+        try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, correo);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+
+                    Usuario usuario = new Usuario();
+
+                    usuario.setIdUsuario(
+                            rs.getInt("id_usuario")
+                    );
+
+                    usuario.setNombre(
+                            rs.getString("nombre")
+                    );
+
+                    usuario.setCorreo(
+                            rs.getString("correo")
+                    );
+
+                    usuario.setContrasena(
+                            rs.getString("contrasena")
+                    );
+
+                    usuario.setCarrera(
+                            rs.getString("carrera")
+                    );
+
+                    java.sql.Date fecha
+                            = rs.getDate("fecha_registro");
+
+                    if (fecha != null) {
+                        usuario.setFechaRegistro(
+                                fecha.toLocalDate()
+                        );
+                    }
+
+                    return usuario;
+                }
+            }
+
+        } catch (SQLException e) {
+            System.err.println(
+                    "Error al buscar usuario: "
+                    + e.getMessage()
+            );
+        }
+
+        return null;
     }
 
 }
