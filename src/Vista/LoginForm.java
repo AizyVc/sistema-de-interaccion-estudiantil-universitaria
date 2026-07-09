@@ -9,6 +9,9 @@ import Modelo.DTO.Usuario;
 import Sesion.SesionUsuario;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.ui.FlatLineBorder;
+import java.awt.Color;
+import java.awt.Insets;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -26,8 +29,18 @@ public class LoginForm extends javax.swing.JFrame {
     public LoginForm() {
         initComponents();
         usuarioController = new UsuarioController();
-
+        aplicarPlaceholders();
+        setResizable(false);
     }
+    
+    private void aplicarPlaceholders() {
+    txtCorreo.putClientProperty("JTextField.placeholderText", "Ingrese su correo electrónico...");
+    txtContrasena.putClientProperty("JTextField.placeholderText", "Ingrese su contraseña...");
+
+    txtCorreo.setForeground(java.awt.Color.BLACK);
+    txtContrasena.setForeground(java.awt.Color.BLACK);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,48 +62,39 @@ public class LoginForm extends javax.swing.JFrame {
         lblRegistrarse = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
+        logo = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(250, 251, 252));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel3.setForeground(new java.awt.Color(0, 58, 154));
         jLabel3.setText("Inicio de sesión");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel1.setForeground(new java.awt.Color(0, 58, 154));
         jLabel1.setText("Correo Electrónico ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
-        txtCorreo.setBackground(new java.awt.Color(250, 251, 252));
         txtCorreo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
-        txtCorreo.setText("Ingrese su correo electrónico...");
         txtCorreo.setBorder(null);
         txtCorreo.setName(""); // NOI18N
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 267, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel2.setForeground(new java.awt.Color(0, 58, 154));
         jLabel2.setText("Contraseña");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
-        txtContrasena.setBackground(new java.awt.Color(250, 251, 252));
         txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(204, 204, 204));
-        txtContrasena.setText(".............");
+        txtContrasena.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtContrasena.setBorder(null);
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 267, -1));
 
-        btnIniciarSesion.setBackground(new java.awt.Color(0, 32, 94));
+        btnIniciarSesion.setBackground(new java.awt.Color(0, 58, 154));
         btnIniciarSesion.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("Iniciar Sesion");
@@ -100,15 +104,13 @@ public class LoginForm extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, 110, 34));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(125, 129, 142));
         jLabel4.setText("¿Aún no tiene una cuenta?");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
 
         lblRegistrarse.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        lblRegistrarse.setForeground(new java.awt.Color(51, 51, 255));
+        lblRegistrarse.setForeground(new java.awt.Color(0, 58, 154));
         lblRegistrarse.setText("Registrarse");
         lblRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,17 +118,86 @@ public class LoginForm extends javax.swing.JFrame {
                 lblRegistrarseMouseClicked(evt);
             }
         });
-        jPanel1.add(lblRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
 
-        jSeparator1.setForeground(new java.awt.Color(0, 32, 94));
+        jSeparator1.setForeground(new java.awt.Color(0, 58, 154));
         jSeparator1.setMaximumSize(new java.awt.Dimension(32767, 35));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 270, -1));
 
-        jSeparator2.setForeground(new java.awt.Color(0, 32, 94));
+        jSeparator2.setForeground(new java.awt.Color(0, 58, 154));
         jSeparator2.setMaximumSize(new java.awt.Dimension(32767, 35));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 270, 10));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 390, 440));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/image_1.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(9, 9, 9)
+                                .addComponent(lblRegistrarse))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(jLabel3))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(logo)))
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addGap(11, 11, 11)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addGap(11, 11, 11)
+                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(lblRegistrarse))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 410, 490));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         bg.setMaximumSize(new java.awt.Dimension(1024, 640));
@@ -139,6 +210,13 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarseMouseClicked
+        // TODO add your handling code here:
+        RegistroForm registro = new RegistroForm();
+        registro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblRegistrarseMouseClicked
+
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         String correo = txtCorreo.getText().trim();
         String contrasena = new String(txtContrasena.getPassword()).trim();
@@ -148,12 +226,12 @@ public class LoginForm extends javax.swing.JFrame {
         }
         if (!usuarioController.validarContrasena(contrasena)) {
             JOptionPane.showMessageDialog(this,
-                    "La contraseña debe tener al menos 8 caracteres.");
+                "La contraseña debe tener al menos 8 caracteres.");
             return;
         }
         if (!usuarioController.validarCorreo(correo)) {
             JOptionPane.showMessageDialog(this,
-                    "Ingrese un correo electrónico válido.");
+                "Ingrese un correo electrónico válido.");
             return;
         }
         Usuario usuario = usuarioController.iniciarSesion(correo, contrasena);
@@ -170,21 +248,14 @@ public class LoginForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
-    private void lblRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarseMouseClicked
-        // TODO add your handling code here:
-        RegistroForm registro = new RegistroForm();
-        registro.setVisible(true);
-        this.dispose();
-
-    }//GEN-LAST:event_lblRegistrarseMouseClicked
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatLightLaf.setup();
-        UIManager.put("Button.arc", 999);
+        UIManager.put("TextComponent.placeholderForeground", new java.awt.Color(170, 170, 170));
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -207,6 +278,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblRegistrarse;
+    private javax.swing.JLabel logo;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtCorreo;
     // End of variables declaration//GEN-END:variables

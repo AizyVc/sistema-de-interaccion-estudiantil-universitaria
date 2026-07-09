@@ -36,6 +36,7 @@ public class DashBoard extends javax.swing.JFrame {
         perfilPanel = new PerfilPanel();
         SetDate();
         mostrarInicio();
+        setResizable(false);
     }
 
     private void mostrarPanel(JPanel panelHijo) {
@@ -129,7 +130,7 @@ public class DashBoard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBackground(new java.awt.Color(245, 248, 252));
         background.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         background.setPreferredSize(new java.awt.Dimension(1020, 680));
 
@@ -265,7 +266,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTituloSistema)
                     .addComponent(dateText))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +278,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
-        panelContenido.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenido.setBackground(new java.awt.Color(245, 248, 252));
 
         javax.swing.GroupLayout panelContenidoLayout = new javax.swing.GroupLayout(panelContenido);
         panelContenido.setLayout(panelContenidoLayout);

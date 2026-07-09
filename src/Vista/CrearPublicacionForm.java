@@ -26,11 +26,12 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
     private HomePanel homePanel;
 
     public CrearPublicacionForm() {
+        setUndecorated(true);
         initComponents();
-
+        
         categoriaController = new CategoriaController();
         publicacionController = new PublicacionController();
-
+        
         cargarCategorias();
     }
 
@@ -68,17 +69,22 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
         txtContenidoPublicacion = new javax.swing.JTextArea();
         btnCancelar = new javax.swing.JButton();
         btnPublicar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         lblBienvenida.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        lblBienvenida.setForeground(new java.awt.Color(0, 32, 94));
+        lblBienvenida.setForeground(new java.awt.Color(0, 58, 154));
         lblBienvenida.setText("Crear nueva publicación");
 
+        lblTitulo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(0, 58, 154));
         lblTitulo.setText("Título:");
 
-        txtTituloPublicacion.setText("jTextField1");
-
+        lblCategoria.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblCategoria.setForeground(new java.awt.Color(0, 58, 154));
         lblCategoria.setText("Categoría:");
 
         cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Confesiones", "Proyectos", "Tareas", "Eventos", "Preguntas académicas" }));
@@ -88,12 +94,21 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
             }
         });
 
+        lblContenido.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblContenido.setForeground(new java.awt.Color(0, 58, 154));
         lblContenido.setText("Contenido:");
 
+        scrollContenido.setBorder(null);
+
+        txtContenidoPublicacion.setBackground(new java.awt.Color(245, 248, 252));
         txtContenidoPublicacion.setColumns(20);
+        txtContenidoPublicacion.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtContenidoPublicacion.setRows(5);
+        txtContenidoPublicacion.setBorder(null);
         scrollContenido.setViewportView(txtContenidoPublicacion);
 
+        btnCancelar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(0, 58, 154));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +116,9 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
             }
         });
 
+        btnPublicar.setBackground(new java.awt.Color(0, 58, 154));
+        btnPublicar.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnPublicar.setForeground(new java.awt.Color(255, 255, 255));
         btnPublicar.setText("Publicar");
         btnPublicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,50 +126,58 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crearicon.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBienvenida)
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitulo)
-                            .addComponent(lblCategoria)
-                            .addComponent(btnCancelar)
-                            .addComponent(lblContenido))
-                        .addGap(23, 23, 23)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnPublicar)
-                            .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTituloPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(scrollContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPublicar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtTituloPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTitulo)
+                        .addComponent(lblCategoria)
+                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblContenido)
+                        .addComponent(scrollContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(lblBienvenida))))
                 .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lblBienvenida)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTituloPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTitulo))
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(lblBienvenida)))
+                .addGap(18, 18, 18)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTituloPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCategoria))
+                .addComponent(lblCategoria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblContenido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblContenido)
-                    .addComponent(scrollContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnPublicar))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(btnPublicar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -162,9 +188,7 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -258,6 +282,7 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnPublicar;
     private javax.swing.JComboBox<String> cmbCategoria;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBienvenida;
     private javax.swing.JLabel lblCategoria;

@@ -38,16 +38,16 @@ public class MisPublicacionesPanel extends javax.swing.JPanel {
     lblTitulo.setText(publicacion.getTitulo());
 
     lblCategoria.setText(
-            "Categoría: " + publicacion.getNombreCategoria()
+             publicacion.getNombreCategoria()
     );
 
     if (publicacion.getFecha() != null) {
 
         DateTimeFormatter formato =
-                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+                DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         lblFecha.setText(
-                "Fecha: " + publicacion.getFecha().format(formato)
+                publicacion.getFecha().format(formato)
         );
 
     } else {
@@ -73,20 +73,33 @@ public class MisPublicacionesPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtContenido = new javax.swing.JTextArea();
         btnEliminar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        lblTitulo.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(0, 58, 154));
         lblTitulo.setText("jLabel1");
 
+        lblCategoria.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblCategoria.setForeground(new java.awt.Color(0, 58, 154));
         lblCategoria.setText("jLabel1");
 
+        lblFecha.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblFecha.setForeground(new java.awt.Color(153, 153, 153));
         lblFecha.setText("jLabel1");
 
         txtContenido.setEditable(false);
+        txtContenido.setBackground(new java.awt.Color(245, 248, 252));
         txtContenido.setColumns(20);
+        txtContenido.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtContenido.setLineWrap(true);
         txtContenido.setRows(5);
         txtContenido.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtContenido);
 
+        btnEliminar.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(0, 58, 154));
         btnEliminar.setText("Eliminar Publicacion");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,33 +111,37 @@ public class MisPublicacionesPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitulo)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
                             .addComponent(lblFecha)
-                            .addComponent(lblCategoria)
-                            .addComponent(lblTitulo))
-                        .addGap(184, 184, 184)
-                        .addComponent(btnEliminar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addComponent(lblCategoria))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 754, Short.MAX_VALUE))
+                        .addComponent(btnEliminar)))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(27, 27, 27)
+                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(lblTitulo)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitulo)
-                    .addComponent(btnEliminar))
-                .addGap(18, 18, 18)
-                .addComponent(lblCategoria)
-                .addGap(18, 18, 18)
-                .addComponent(lblFecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                    .addComponent(lblFecha)
+                    .addComponent(lblCategoria))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -167,6 +184,7 @@ public class MisPublicacionesPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblTitulo;

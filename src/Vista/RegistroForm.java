@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.UsuarioController;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -22,6 +23,20 @@ public class RegistroForm extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         usuarioController = new UsuarioController();
+        aplicarPlaceholders();
+        setResizable(false);
+    }
+    private void aplicarPlaceholders() {
+    txtNombre.putClientProperty("JTextField.placeholderText", "Ingrese su nombre completo...");   
+    txtCorreo.putClientProperty("JTextField.placeholderText", "Ingrese su correo electrónico...");
+    txtContrasena.putClientProperty("JTextField.placeholderText", "Ingrese su contraseña...");
+    txtConfirmarContrasena.putClientProperty("JTextField.placeholderText", "Ingrese nuevamente su contraseña...");
+    
+    //forma normal
+    txtNombre.setForeground(java.awt.Color.BLACK);
+    txtCorreo.setForeground(java.awt.Color.BLACK);
+    txtContrasena.setForeground(java.awt.Color.BLACK);
+    txtConfirmarContrasena.setForeground(java.awt.Color.BLACK);
     }
 
     /**
@@ -58,65 +73,50 @@ public class RegistroForm extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(900, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(250, 251, 252));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel1.setForeground(new java.awt.Color(0, 58, 154));
         jLabel1.setText("Crear cuenta");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel2.setForeground(new java.awt.Color(0, 58, 154));
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
-        txtNombre.setBackground(new java.awt.Color(250, 251, 252));
         txtNombre.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtNombre.setBorder(null);
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 256, -1));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel3.setForeground(new java.awt.Color(0, 58, 154));
         jLabel3.setText("Correo Electrónico");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
-        txtCorreo.setBackground(new java.awt.Color(250, 251, 252));
         txtCorreo.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtCorreo.setBorder(null);
-        jPanel1.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 256, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel4.setForeground(new java.awt.Color(0, 58, 154));
         jLabel4.setText("Carrera");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
 
         cmbCarrera.setForeground(new java.awt.Color(204, 204, 204));
         cmbCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione su carrera...", "Software", "Tecnologia de la Informacion", "IA", "Ingenieria Civil" }));
-        jPanel1.add(cmbCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 256, -1));
+        cmbCarrera.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 58, 154), 1, true));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel5.setForeground(new java.awt.Color(0, 58, 154));
         jLabel5.setText("Contraseña");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
 
-        txtContrasena.setBackground(new java.awt.Color(250, 251, 252));
         txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtContrasena.setBorder(null);
-        jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 256, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 32, 94));
+        jLabel6.setForeground(new java.awt.Color(0, 58, 154));
         jLabel6.setText("Confirmar Contraseña");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
 
-        txtConfirmarContrasena.setBackground(new java.awt.Color(250, 251, 252));
         txtConfirmarContrasena.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         txtConfirmarContrasena.setBorder(null);
-        jPanel1.add(txtConfirmarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 256, -1));
 
-        btnRegistrarse.setBackground(new java.awt.Color(0, 32, 94));
+        btnRegistrarse.setBackground(new java.awt.Color(0, 58, 154));
         btnRegistrarse.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         btnRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrarse.setText("Registrarse");
@@ -131,40 +131,126 @@ public class RegistroForm extends javax.swing.JFrame {
                 btnRegistrarseActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 110, 30));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         jLabel7.setText("¿Ya tienes una cuenta?");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
 
         lblIniciarSesion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
-        lblIniciarSesion.setForeground(new java.awt.Color(0, 0, 255));
-        lblIniciarSesion.setText("Iniciar Sesion");
+        lblIniciarSesion.setForeground(new java.awt.Color(0, 58, 154));
+        lblIniciarSesion.setText("Iniciar Sesión");
         lblIniciarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblIniciarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblIniciarSesionMouseClicked(evt);
             }
         });
-        jPanel1.add(lblIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, -1, -1));
 
-        jSeparator2.setForeground(new java.awt.Color(0, 32, 94));
+        jSeparator2.setForeground(new java.awt.Color(0, 58, 154));
         jSeparator2.setMaximumSize(new java.awt.Dimension(32767, 35));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 260, 10));
 
-        jSeparator3.setForeground(new java.awt.Color(0, 32, 94));
+        jSeparator3.setForeground(new java.awt.Color(0, 58, 154));
         jSeparator3.setMaximumSize(new java.awt.Dimension(32767, 35));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 260, 10));
 
-        jSeparator4.setForeground(new java.awt.Color(0, 32, 94));
+        jSeparator4.setForeground(new java.awt.Color(0, 58, 154));
         jSeparator4.setMaximumSize(new java.awt.Dimension(32767, 35));
-        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 260, 10));
 
-        jSeparator5.setForeground(new java.awt.Color(0, 32, 94));
+        jSeparator5.setForeground(new java.awt.Color(0, 58, 154));
         jSeparator5.setMaximumSize(new java.awt.Dimension(32767, 35));
-        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 260, 10));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 450, 480));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConfirmarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGap(74, 74, 74)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel2))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel3))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel4))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel5))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel6))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(80, 80, 80)
+                                    .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(16, 16, 16)
+                                    .addComponent(lblIniciarSesion))))))
+                .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(137, 137, 137))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(1, 1, 1)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3)
+                .addGap(1, 1, 1)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel5)
+                .addGap(1, 1, 1)
+                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel6)
+                .addGap(11, 11, 11)
+                .addComponent(txtConfirmarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(lblIniciarSesion))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, 430, 530));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 680));
@@ -276,6 +362,7 @@ public class RegistroForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RegistroForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        UIManager.put("TextComponent.placeholderForeground", new java.awt.Color(170, 170, 170));
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

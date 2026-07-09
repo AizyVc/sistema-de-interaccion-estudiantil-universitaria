@@ -65,33 +65,47 @@ public class ComentarioPanel extends javax.swing.JPanel {
         lblFecha = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtContenido = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
 
+        setBackground(new java.awt.Color(245, 248, 252));
+
+        lblUsuario.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(0, 58, 154));
         lblUsuario.setText("Autor");
 
+        lblFecha.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblFecha.setForeground(new java.awt.Color(153, 153, 153));
         lblFecha.setText("Fecha");
 
         txtContenido.setEditable(false);
+        txtContenido.setBackground(new java.awt.Color(255, 255, 255));
         txtContenido.setColumns(20);
+        txtContenido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtContenido.setLineWrap(true);
         txtContenido.setRows(5);
         txtContenido.setWrapStyleWord(true);
+        txtContenido.setBorder(null);
         jScrollPane1.setViewportView(txtContenido);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Usericon3.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFecha)
-                    .addComponent(lblUsuario))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(lblUsuario)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,15 +113,19 @@ public class ComentarioPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lblUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblFecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblFecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSlider jSlider1;

@@ -65,18 +65,29 @@ public class PublicacionPanel extends javax.swing.JPanel {
         btnDetalle = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtContenido = new javax.swing.JTextArea();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(153, 153, 153));
 
-        lblTitulo.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(0, 58, 154));
         lblTitulo.setText("Titulo ");
 
+        lblUsuario.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(153, 153, 153));
         lblUsuario.setText("Autor");
 
+        lblFecha.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblFecha.setForeground(new java.awt.Color(153, 153, 153));
         lblFecha.setText("Fecha");
 
+        lblCategoria.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblCategoria.setForeground(new java.awt.Color(0, 58, 154));
         lblCategoria.setText("Categoria");
 
+        btnDetalle.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        btnDetalle.setForeground(new java.awt.Color(0, 58, 154));
         btnDetalle.setText("Ver Detalle");
         btnDetalle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,45 +95,56 @@ public class PublicacionPanel extends javax.swing.JPanel {
             }
         });
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+
         txtContenido.setEditable(false);
+        txtContenido.setBackground(new java.awt.Color(243, 246, 252));
         txtContenido.setColumns(20);
+        txtContenido.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtContenido.setLineWrap(true);
         txtContenido.setRows(5);
         txtContenido.setWrapStyleWord(true);
+        txtContenido.setBorder(null);
         jScrollPane1.setViewportView(txtContenido);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblTitulo)
-                        .addComponent(lblCategoria)
-                        .addComponent(lblFecha)
-                        .addComponent(lblUsuario)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitulo)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblUsuario)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblFecha)
+                            .addGap(18, 18, 18)
+                            .addComponent(lblCategoria))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(lblTitulo)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUsuario)
+                    .addComponent(lblFecha)
+                    .addComponent(lblCategoria))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblUsuario)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblFecha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCategoria)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDetalle)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -147,6 +169,7 @@ public class PublicacionPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDetalle;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblTitulo;
