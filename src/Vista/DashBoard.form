@@ -56,7 +56,7 @@
                       <Component id="header" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Component id="content" max="32767" attributes="0"/>
+                          <Component id="panelContenido" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -70,7 +70,7 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="header" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="content" min="-2" max="-2" attributes="0"/>
+                  <Component id="panelContenido" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -89,9 +89,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnInicio" min="-2" pref="220" max="-2" attributes="0"/>
-                  <Component id="btnPublicaciones" min="-2" pref="220" max="-2" attributes="0"/>
+                  <Component id="pnlNuevaPublicacion" min="-2" pref="220" max="-2" attributes="0"/>
                   <Component id="btnPerfil" min="-2" pref="220" max="-2" attributes="0"/>
-                  <Component id="btnCerrarSesion" min="-2" pref="220" max="-2" attributes="0"/>
+                  <Component id="pnlCerrarSesion" min="-2" pref="220" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -111,11 +111,11 @@
                       <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
                       <Component id="btnInicio" min="-2" pref="68" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="btnPublicaciones" min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="pnlNuevaPublicacion" min="-2" pref="68" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="btnPerfil" min="-2" pref="68" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
-                      <Component id="btnCerrarSesion" min="-2" pref="68" max="-2" attributes="0"/>
+                      <Component id="pnlCerrarSesion" min="-2" pref="68" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -162,6 +162,7 @@
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnInicioMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInicioActionPerformed"/>
               </Events>
             </Component>
@@ -179,7 +180,7 @@
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnPublicaciones">
+            <Component class="javax.swing.JButton" name="pnlNuevaPublicacion">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="8e" green="4d" red="26" type="rgb"/>
@@ -193,7 +194,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/imagenes/publicaciones icon.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Publicaciones"/>
+                <Property name="text" type="java.lang.String" value="Nueva Publicacion"/>
                 <Property name="actionCommand" type="java.lang.String" value=""/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
@@ -208,7 +209,7 @@
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPublicacionesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pnlNuevaPublicacionActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnPerfil">
@@ -242,7 +243,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPerfilActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnCerrarSesion">
+            <Component class="javax.swing.JButton" name="pnlCerrarSesion">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="8e" green="4d" red="26" type="rgb"/>
@@ -270,7 +271,7 @@
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarSesionActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pnlCerrarSesionActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -332,7 +333,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="content">
+        <Container class="javax.swing.JPanel" name="panelContenido">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

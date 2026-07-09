@@ -23,7 +23,7 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
     private CategoriaController categoriaController;
     private PublicacionController publicacionController;
     private List<Categoria> listaCategorias;
-    private HomeForm homeForm;
+    private HomePanel homePanel;
 
     public CrearPublicacionForm() {
         initComponents();
@@ -34,9 +34,10 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
         cargarCategorias();
     }
 
-    public CrearPublicacionForm(HomeForm homeForm) {
+    public CrearPublicacionForm(HomePanel homePanel) {
         this();
-        this.homeForm = homeForm;
+     
+        this.homePanel = homePanel;
     }
 
     private void cargarCategorias() {
@@ -198,8 +199,8 @@ public class CrearPublicacionForm extends javax.swing.JFrame {
                     "Publicación creada correctamente."
             );
 
-            if (homeForm != null) {
-                homeForm.actualizarPublicaciones();
+            if (homePanel != null) {
+                homePanel.actualizarPublicaciones();
             }
 
             dispose();

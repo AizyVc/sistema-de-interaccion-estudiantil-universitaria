@@ -32,4 +32,5 @@ public class SesionUsuario {
     public static boolean haySesionActiva() {
         return usuarioActual != null;
     }
+   
 }

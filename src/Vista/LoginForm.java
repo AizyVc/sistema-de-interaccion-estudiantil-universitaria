@@ -28,8 +28,6 @@ public class LoginForm extends javax.swing.JFrame {
         usuarioController = new UsuarioController();
 
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -162,9 +160,10 @@ public class LoginForm extends javax.swing.JFrame {
 
         if (usuario != null) {
             SesionUsuario.iniciarSesion(usuario);
-            JOptionPane.showMessageDialog(this,"Bienvenido " + usuario.getNombre());
-            HomeForm home = new HomeForm();
-            home.setVisible(true);
+            JOptionPane.showMessageDialog(this, "Bienvenido " + usuario.getNombre());
+            DashBoard dashboard = new DashBoard();
+            dashboard.setLocationRelativeTo(null);
+            dashboard.setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
@@ -184,9 +183,9 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-       FlatLightLaf.setup();
-        UIManager.put( "Button.arc", 999 );
-        
+        FlatLightLaf.setup();
+        UIManager.put("Button.arc", 999);
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

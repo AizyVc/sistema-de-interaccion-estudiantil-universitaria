@@ -17,6 +17,7 @@ public class PublicacionPanel extends javax.swing.JPanel {
      * Creates new form PublicacionPanel
      */
     private int idPublicacion;
+    private PublicacionVista publicacion;
 
     public PublicacionPanel() {
         initComponents();
@@ -24,23 +25,19 @@ public class PublicacionPanel extends javax.swing.JPanel {
 
     public PublicacionPanel(PublicacionVista publicacion) {
         initComponents();
+
+        this.publicacion = publicacion;
         this.idPublicacion = publicacion.getIdPublicacion();
+
         lblTitulo.setText(publicacion.getTitulo());
-        lblUsuario.setText(
-                "Autor: " + publicacion.getNombreUsuario()
-        );
-        lblCategoria.setText(
-                "Categoría: " + publicacion.getNombreCategoria()
-        );
+        lblUsuario.setText(publicacion.getNombreUsuario());
+        lblCategoria.setText(publicacion.getNombreCategoria());
+
         if (publicacion.getFecha() != null) {
             DateTimeFormatter formato
-                    = DateTimeFormatter.ofPattern(
-                            "dd/MM/yyyy HH:mm"
-                    );
-            lblFecha.setText(
-                    "Fecha: "
-                    + publicacion.getFecha().format(formato)
-            );
+                    = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            lblFecha.setText(publicacion.getFecha().format(formato));
         } else {
             lblFecha.setText("Fecha: no disponible");
         }
@@ -131,6 +128,19 @@ public class PublicacionPanel extends javax.swing.JPanel {
 
     private void btnDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleActionPerformed
         // TODO add your handling code here:
+        if (publicacion == null) {
+            return;
+        }
+
+        DetallePublicacionForm detalle
+                = new DetallePublicacionForm(publicacion);
+
+        detalle.setLocationRelativeTo(
+                javax.swing.SwingUtilities
+                        .getWindowAncestor(this)
+        );
+
+        detalle.setVisible(true);
     }//GEN-LAST:event_btnDetalleActionPerformed
 
 

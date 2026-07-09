@@ -8,9 +8,9 @@ import Modelo.DAO.PublicacionDAO;
 import Modelo.DTO.Publicacion;
 import Modelo.DTO.Usuario;
 import Sesion.SesionUsuario;
-import java.sql.ResultSet;
 import Modelo.DTO.PublicacionVista;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -53,4 +53,45 @@ public class PublicacionController {
         return publicacionDAO.listarPublicaciones();
     }
 
+    public List<PublicacionVista> listarPublicacionesDelUsuario() {
+
+        Usuario usuarioActual = SesionUsuario.obtenerUsuario();
+
+        if (usuarioActual == null) {
+            return new ArrayList<>();
+        }
+
+        return publicacionDAO.listarPublicacionesPorUsuario(
+                usuarioActual.getIdUsuario()
+        );
+    }
+
+    public boolean eliminarPublicacion(int idPublicacion) {
+
+        if (idPublicacion <= 0) {
+            return false;
+        }
+
+        Usuario usuarioActual = SesionUsuario.obtenerUsuario();
+
+        if (usuarioActual == null) {
+            return false;
+        }
+
+        return publicacionDAO.eliminarPublicacion(
+                idPublicacion,
+                usuarioActual.getIdUsuario()
+        );
+    }
+
+    public List<PublicacionVista> listarPorCategoria(
+            int idCategoria
+    ) {
+
+        if (idCategoria <= 0) {
+            return publicacionDAO.listarPublicaciones();
+        }
+
+        return publicacionDAO.listarPorCategoria(idCategoria);
+    }
 }

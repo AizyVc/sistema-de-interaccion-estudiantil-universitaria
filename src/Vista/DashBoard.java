@@ -10,6 +10,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import javax.swing.UIManager;
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import Sesion.SesionUsuario;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,20 +23,87 @@ import javax.swing.UIManager;
  */
 public class DashBoard extends javax.swing.JFrame {
 
+    private HomePanel homePanel;
+    private PerfilPanel perfilPanel;
+
     /**
      * Creates new form PerfilForm
      */
     public DashBoard() {
         initComponents();
+
+        homePanel = new HomePanel(this);
+        perfilPanel = new PerfilPanel();
         SetDate();
+        mostrarInicio();
     }
-    
-    private void SetDate(){
+
+    private void mostrarPanel(JPanel panelHijo) {
+        panelContenido.removeAll();
+        panelContenido.setLayout(new BorderLayout());
+        panelContenido.add(
+                panelHijo,
+                BorderLayout.CENTER
+        );
+        panelContenido.revalidate();
+        panelContenido.repaint();
+    }
+
+    public void mostrarInicio() {
+        HomePanel homePanel = new HomePanel();
+        mostrarPanel(homePanel);
+    }
+
+    public void mostrarPerfil() {
+        perfilPanel.actualizarDatos();
+        mostrarPanel(perfilPanel);
+    }
+
+    private void SetDate() {
         LocalDate now = LocalDate.now();
-        Locale spanishLocale = new Locale("es","ES");
+        Locale spanishLocale = new Locale("es", "ES");
         dateText.setText(now.format(DateTimeFormatter.ofPattern("EEEE, d 'de' MMMM 'de' yyyy", spanishLocale)));
     }
-   
+
+    public void abrirNuevaPublicacion() {
+
+        CrearPublicacionForm crearForm
+                = new CrearPublicacionForm();
+
+        crearForm.setLocationRelativeTo(this);
+
+        crearForm.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                mostrarInicio();
+            }
+        });
+
+        crearForm.setVisible(true);
+    }
+
+    private void cerrarSesion() {
+
+        int opcion = JOptionPane.showConfirmDialog(
+                this,
+                "¿Desea cerrar la sesión?",
+                "Cerrar sesión",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (opcion != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        SesionUsuario.cerrarSesion();
+
+        LoginForm login = new LoginForm();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+
+        dispose();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,13 +119,13 @@ public class DashBoard extends javax.swing.JFrame {
         div = new javax.swing.JSeparator();
         btnInicio = new javax.swing.JButton();
         btnLogo = new javax.swing.JButton();
-        btnPublicaciones = new javax.swing.JButton();
+        pnlNuevaPublicacion = new javax.swing.JButton();
         btnPerfil = new javax.swing.JButton();
-        btnCerrarSesion = new javax.swing.JButton();
+        pnlCerrarSesion = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         lblTituloSistema = new javax.swing.JLabel();
         dateText = new javax.swing.JLabel();
-        content = new javax.swing.JPanel();
+        panelContenido = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +150,11 @@ public class DashBoard extends javax.swing.JFrame {
         btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnInicio.setIconTextGap(10);
+        btnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInicioMouseClicked(evt);
+            }
+        });
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
@@ -88,20 +166,20 @@ public class DashBoard extends javax.swing.JFrame {
         btnLogo.setBorder(null);
         btnLogo.setBorderPainted(false);
 
-        btnPublicaciones.setBackground(new java.awt.Color(38, 77, 142));
-        btnPublicaciones.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnPublicaciones.setForeground(new java.awt.Color(255, 255, 255));
-        btnPublicaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/publicaciones icon.png"))); // NOI18N
-        btnPublicaciones.setText("Publicaciones");
-        btnPublicaciones.setActionCommand("");
-        btnPublicaciones.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnPublicaciones.setBorderPainted(false);
-        btnPublicaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnPublicaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnPublicaciones.setIconTextGap(10);
-        btnPublicaciones.addActionListener(new java.awt.event.ActionListener() {
+        pnlNuevaPublicacion.setBackground(new java.awt.Color(38, 77, 142));
+        pnlNuevaPublicacion.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        pnlNuevaPublicacion.setForeground(new java.awt.Color(255, 255, 255));
+        pnlNuevaPublicacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/publicaciones icon.png"))); // NOI18N
+        pnlNuevaPublicacion.setText("Nueva Publicacion");
+        pnlNuevaPublicacion.setActionCommand("");
+        pnlNuevaPublicacion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        pnlNuevaPublicacion.setBorderPainted(false);
+        pnlNuevaPublicacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlNuevaPublicacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pnlNuevaPublicacion.setIconTextGap(10);
+        pnlNuevaPublicacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPublicacionesActionPerformed(evt);
+                pnlNuevaPublicacionActionPerformed(evt);
             }
         });
 
@@ -121,19 +199,19 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        btnCerrarSesion.setBackground(new java.awt.Color(38, 77, 142));
-        btnCerrarSesion.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
-        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarIcon.png"))); // NOI18N
-        btnCerrarSesion.setText("Cerrar sesión");
-        btnCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnCerrarSesion.setBorderPainted(false);
-        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCerrarSesion.setIconTextGap(10);
-        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+        pnlCerrarSesion.setBackground(new java.awt.Color(38, 77, 142));
+        pnlCerrarSesion.setFont(new java.awt.Font("Century Gothic", 1, 16)); // NOI18N
+        pnlCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        pnlCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrarIcon.png"))); // NOI18N
+        pnlCerrarSesion.setText("Cerrar sesión");
+        pnlCerrarSesion.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
+        pnlCerrarSesion.setBorderPainted(false);
+        pnlCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        pnlCerrarSesion.setIconTextGap(10);
+        pnlCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSesionActionPerformed(evt);
+                pnlCerrarSesionActionPerformed(evt);
             }
         });
 
@@ -142,9 +220,9 @@ public class DashBoard extends javax.swing.JFrame {
         menuLayout.setHorizontalGroup(
             menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnPublicaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlNuevaPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(btnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(menuLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,11 +239,11 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(btnPublicaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlNuevaPublicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(btnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(201, 201, 201)
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(pnlCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         header.setBackground(new java.awt.Color(130, 158, 201));
@@ -199,16 +277,16 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
-        content.setBackground(new java.awt.Color(255, 255, 255));
+        panelContenido.setBackground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
-        content.setLayout(contentLayout);
-        contentLayout.setHorizontalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelContenidoLayout = new javax.swing.GroupLayout(panelContenido);
+        panelContenido.setLayout(panelContenidoLayout);
+        panelContenidoLayout.setHorizontalGroup(
+            panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        contentLayout.setVerticalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelContenidoLayout.setVerticalGroup(
+            panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 506, Short.MAX_VALUE)
         );
 
@@ -223,7 +301,7 @@ public class DashBoard extends javax.swing.JFrame {
                     .addComponent(header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(backgroundLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         backgroundLayout.setVerticalGroup(
@@ -233,7 +311,7 @@ public class DashBoard extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -253,19 +331,31 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btnInicioActionPerformed
 
-    private void btnPublicacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublicacionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPublicacionesActionPerformed
+    private void pnlNuevaPublicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnlNuevaPublicacionActionPerformed
+        CrearPublicacionForm crearForm
+                = new CrearPublicacionForm();
+
+        crearForm.setLocationRelativeTo(this);
+        crearForm.setVisible(true);
+    }//GEN-LAST:event_pnlNuevaPublicacionActionPerformed
 
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
         // TODO add your handling code here:
+        mostrarPerfil();
     }//GEN-LAST:event_btnPerfilActionPerformed
 
-    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+    private void pnlCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pnlCerrarSesionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnCerrarSesionActionPerformed
+        cerrarSesion();
+    }//GEN-LAST:event_pnlCerrarSesionActionPerformed
+
+    private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
+        // TODO add your handling code here:
+        mostrarInicio();
+    }//GEN-LAST:event_btnInicioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -273,8 +363,8 @@ public class DashBoard extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatLightLaf.setup();
-        UIManager.put( "Button.arc", 999 );
-        
+        UIManager.put("Button.arc", 999);
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -285,16 +375,16 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
-    private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnInicio;
     private javax.swing.JButton btnLogo;
     private javax.swing.JButton btnPerfil;
-    private javax.swing.JButton btnPublicaciones;
-    private javax.swing.JPanel content;
     private javax.swing.JLabel dateText;
     private javax.swing.JSeparator div;
     private javax.swing.JPanel header;
     private javax.swing.JLabel lblTituloSistema;
     private javax.swing.JPanel menu;
+    private javax.swing.JPanel panelContenido;
+    private javax.swing.JButton pnlCerrarSesion;
+    private javax.swing.JButton pnlNuevaPublicacion;
     // End of variables declaration//GEN-END:variables
 }
