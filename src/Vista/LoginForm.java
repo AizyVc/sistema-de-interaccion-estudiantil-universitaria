@@ -160,7 +160,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         if (usuario != null) {
             SesionUsuario.iniciarSesion(usuario);
-            JOptionPane.showMessageDialog(this, "Bienvenido " + usuario.getNombre());
+            JOptionPane.showMessageDialog(this, "Bienvenido/a " + usuario.getNombre());
             DashBoard dashboard = new DashBoard();
             dashboard.setLocationRelativeTo(null);
             dashboard.setVisible(true);

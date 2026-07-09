@@ -202,8 +202,14 @@ public class RegistroForm extends javax.swing.JFrame {
             return;
         }
 
-        if (carrera.equals("Escoja una opcion")) {
-            JOptionPane.showMessageDialog(this, "Seleccione una carrera.");
+        if (cmbCarrera.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Debe seleccionar una carrera.",
+                    "Campo obligatorio",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            cmbCarrera.requestFocus();
             return;
         }
         if (usuarioController.existeCorreo(correo)) {
